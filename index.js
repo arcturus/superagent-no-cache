@@ -1,8 +1,11 @@
 var ie
-try {
-  ie = require('ie')
-} catch (e) {
-  ie = require('component-ie')
+var isBrowser=new Function("try {return this===window;}catch(e){ return false;}")
+if (isBrowser()) {
+  try {
+    ie = require('ie')
+  } catch (e) {
+    ie = require('component-ie')
+  }
 }
 
 function with_query_strings (request) {
